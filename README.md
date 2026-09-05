@@ -8,7 +8,7 @@
 
 ---
 
-# AutoGuard - Advanced AntiDetect Browser
+# Professional Gmail Automation & Management Tools
 
 ![Dark Mode ](gui-dark.png) </br>
 ![Light Mode ](gui-light.png)
@@ -16,21 +16,13 @@
 <img src="https://raw.githubusercontent.com/Munna-Soft/Portfolio/master/assets/RGB_Light.gif" width="100%" height="75">
 
 <h3 align="center">
-    👉 <a href="https://mailmanagement.vercel.app/" target="_blank">Vercel Link</a> 🚀 </br></br>
-    👉 <a href="https://mailmanager.netlify.app/" target="_blank">Netlify Link</a> 🚀
+    👉 <a href="https://mailmanagement.vercel.app/" target="_blank">Vercel Link</a> 🚀
 </h3>
 <img src="https://raw.githubusercontent.com/Munna-Soft/Portfolio/master/assets/RGB_Light.gif" width="100%" height="75">
 
 ## Legitimate use & responsibility
 
-Autoguard is a tool for **legitimate multi-account management**: marketing agencies
-handling many client ad accounts, QA and ad-verification testing, web-automation
-development, and privacy research — the same use cases served openly by
-commercial anti-detect browsers.
-
-Do **not** use it for fraud, credential stuffing, spam, evading bans you've
-earned, or anything that violates a site's terms of service or the law. You are
-responsible for how you use it.
+This tool is intended for legitimate email management and automation purposes only. Users are responsible for complying with all applicable laws, regulations, and service provider terms of use. The developers assume no liability for misuse of this software.
 
 ---
 
