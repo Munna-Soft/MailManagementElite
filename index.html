@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mail Management Elite – Professional Gmail Automation & Management Tools</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Mail Management Elite is a professional gmail automation tool with Playwright integration, bulk operations, 2FA support, and advanced profile management." />
+    <meta name="keywords" content="gmail automation, mail management, bulk gmail, playwright automation, 2FA, gmail profiles, SMTP client" />
+    <meta name="author" content="Munna MasterMind" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+	<meta property="og:url" content="https://mailmanagement.vercel.app/" />
+    <meta property="og:title" content="Mail Management Elite – Professional Gmail Automation & Management Tools" />
+    <meta property="og:description" content="Automate your gmail workflows with Mail Management Elite. Bulk operations, profile management, and Playwright integration." />
+    <meta property="og:image" content="https://mailmanagement.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mail Management Elite – Professional Gmail Automation & Management Tools" />
+    <meta name="twitter:description" content="Automate your gmail workflows with Mail Management Elite. Bulk operations, profile management, and Playwright integration." />
+    <meta name="twitter:image" content="https://mailmanagement.vercel.app/og-image.png" />
+	
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        /* ===== Reset & Base ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0B0E14;
+            color: #F8FAFC;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ===== Buttons ===== */
+        .btn {
+            display: inline-block;
+            font-weight: 600;
+            border-radius: 40px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #3B82F6;
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+        }
+        .btn-primary:hover {
+            background: #2563EB;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #F8FAFC;
+            border: 1.5px solid #555;
+        }
+        .btn-outline:hover {
+            border-color: #3B82F6;
+            color: #3B82F6;
+        }
+
+        .btn-sm {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+
+        .btn-lg {
+            padding: 14px 40px;
+            font-size: 1.1rem;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-whatsapp:hover {
+            background: #1da851;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+        }
+
+        /* ===== Theme Toggle ===== */
+        .theme-toggle {
+            background: none;
+            border: 1px solid #555;
+            border-radius: 40px;
+            padding: 6px 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #F8FAFC;
+            background: #1a1a1a;
+        }
+        .theme-toggle:hover {
+            border-color: #3B82F6;
+            transform: scale(1.05);
+        }
+
+        /* ===== Navbar ===== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11, 14, 20, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #3B82F6, #10B981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            padding: 60px 0 80px;
+            background: radial-gradient(ellipse at 30% 40%, #1a1a2e, #0B0E14 70%);
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .badge {
+            background: #2d2d2d;
+            color: #10B981;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            width: fit-content;
+            border: 1px solid #10B98144;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #3B82F6, #10B981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 1.2rem;
+            color: #CBD5E1;
+            max-width: 520px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 8px;
+        }
+
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .screenshot-placeholder {
+            width: 100%;
+            max-width: 500px;
+            background: #1a1a2a;
+            border-radius: 24px;
+            padding: 24px 20px 20px;
+            border: 1px solid #333;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .screenshot-img {
+            max-width: 100%;
+            border-radius: 16px;
+            display: block;
+            margin: 0 auto;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+
+        .screenshot-img:hover {
+            transform: scale(1.04);
+            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.3);
+        }
+
+        /* ===== Sections ===== */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .section-header p {
+            color: #CBD5E1;
+            font-size: 1.1rem;
+            margin-top: 8px;
+        }
+
+        /* ===== Features ===== */
+        .features {
+            background: #0F172A;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: #1a1a2a;
+            padding: 30px 24px;
+            border-radius: 20px;
+            border: 1px solid #2a2a2a;
+            transition: transform 0.2s ease, border-color 0.2s;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            border-color: #3B82F666;
+        }
+
+        .feature-icon {
+            font-size: 2.4rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            color: #CBD5E1;
+            font-size: 0.95rem;
+        }
+
+        /* ===== Tech Stack ===== */
+        .tech-stack {
+            background: #0B0E14;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .tech-item {
+            background: #1a1a2a;
+            padding: 30px 24px;
+            border-radius: 20px;
+            border: 1px solid #2a2a2a;
+            text-align: center;
+            transition: transform 0.2s ease, border-color 0.2s;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-4px);
+            border-color: #3B82F666;
+        }
+
+        .tech-emoji {
+            font-size: 2.8rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .tech-item h4 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+
+        .tech-item p {
+            color: #CBD5E1;
+            font-size: 0.95rem;
+        }
+
+        /* ===== How It Works ===== */
+        .how-to-works {
+            background: #0F172A;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .step {
+            background: #1a1a2a;
+            padding: 30px 20px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid #2a2a2a;
+            position: relative;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #3B82F6;
+            color: #fff;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            line-height: 44px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        .step h4 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        .step p {
+            color: #CBD5E1;
+            font-size: 0.95rem;
+        }
+
+        /* ===== PRICING ===== */
+        .pricing {
+            background: #0B0E14;
+        }
+
+        .pricing-header-flex {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .pricing-header-flex>div {
+            text-align: left;
+        }
+
+        .pricing-header-flex>div h2 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .pricing-header-flex>div p {
+            color: #CBD5E1;
+            font-size: 1.1rem;
+            margin-top: 4px;
+        }
+
+        /* Currency Toggle */
+        .currency-toggle-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #1a1a2a;
+            padding: 10px 18px;
+            border-radius: 40px;
+            border: 1px solid #2a2a2a;
+            flex-shrink: 0;
+        }
+
+        .currency-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #888;
+            transition: color 0.3s;
+        }
+
+        .currency-label.active {
+            color: #fff;
+        }
+
+        .rate-hint {
+            font-size: 0.7rem;
+            color: #666;
+            margin-left: 2px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #3B82F6;
+            transition: .3s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+
+        .switch input:checked+.slider {
+            background-color: #3B82F6;
+        }
+
+        .switch input:checked+.slider:before {
+            transform: translateX(20px);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .pricing-card {
+            background: #1a1a2a;
+            border-radius: 24px;
+            padding: 40px 30px 35px;
+            border: 1px solid #2a2a2a;
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            border-color: #3B82F666;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .pricing-card.popular {
+            border-color: #3B82F6;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.15);
+        }
+
+        .pricing-card.popular:hover {
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.25);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: #3B82F6;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 40px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-card .package-icon {
+            font-size: 2.8rem;
+            margin-bottom: 8px;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .pricing-card .package-sub {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .pricing-card .price {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 4px;
+            letter-spacing: -1px;
+        }
+
+        .pricing-card .price .price-currency {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #888;
+        }
+
+        .pricing-card .price-note {
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        .pricing-card .divider {
+            height: 1px;
+            background: #2a2a2a;
+            margin: 16px 0 20px;
+        }
+
+        .pricing-card .features-list {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 28px;
+            flex: 1;
+        }
+
+        .pricing-card .features-list li {
+            padding: 6px 0;
+            color: #CBD5E1;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-card .features-list li .check {
+            color: #10B981;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .pricing-card .btn-whatsapp {
+            width: 100%;
+            justify-content: center;
+            padding: 14px 20px;
+            font-size: 1rem;
+            margin-top: auto;
+        }
+
+        /* ===== Download ===== */
+        .download {
+            background: #0B0E14;
+            padding: 80px 0 100px;
+        }
+
+        .download-box {
+            background: linear-gradient(145deg, #1a1a2a, #0F172A);
+            padding: 60px 40px;
+            border-radius: 32px;
+            border: 1px solid #2a2a2a;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .download-box .section-header {
+            margin-bottom: 40px;
+        }
+
+        .download-box .section-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+        }
+
+        .download-box .section-header p {
+            color: #CBD5E1;
+            font-size: 1.05rem;
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .download-card {
+            background: #14141e;
+            border: 1px solid #2a2a2a;
+            border-radius: 20px;
+            padding: 28px 24px 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .download-card:hover {
+            transform: translateY(-4px);
+            border-color: #3B82F666;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .os-icon {
+            position: relative;
+            display: inline-block;
+            font-size: 2.8rem;
+            margin-bottom: 8px;
+        }
+
+        .version-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #6c5ce7;
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 20px;
+        }
+
+        .download-card h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .download-card .os-version {
+            color: #666;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+        }
+
+        .download-card .dl-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .download-card .dl-buttons .btn {
+            width: 100%;
+            justify-content: center;
+            padding: 10px 16px;
+            font-size: 0.85rem;
+            border-radius: 30px;
+        }
+
+        .download-note {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 30px;
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background: #0a0a0a;
+            border-top: 1px solid #1e1e1e;
+            padding: 40px 0 0;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 30px;
+            text-align: center;
+            justify-items: center;
+            padding-bottom: 40px;
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-col h4,
+        .footer-col h5 {
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .footer-col p,
+        .footer-col a {
+            color: #CBD5E1;
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 6px;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: #3B82F6;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1a1a1a;
+            padding: 20px 0;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* ============================================================ */
+        /* ===== LIGHT THEME OVERRIDES ===== */
+        /* ============================================================ */
+
+        body.light-theme {
+            background: #f5f5f5;
+            color: #111;
+        }
+        body.light-theme .navbar {
+            background: rgba(245, 245, 245, 0.9);
+            border-bottom: 1px solid #ddd;
+        }
+        body.light-theme .brand {
+            background: linear-gradient(135deg, #2563EB, #059669);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        body.light-theme .btn-outline {
+            color: #111;
+            border-color: #aaa;
+        }
+        body.light-theme .btn-outline:hover {
+            border-color: #3B82F6;
+            color: #3B82F6;
+        }
+        body.light-theme .hero {
+            background: radial-gradient(ellipse at 30% 40%, #e8e8f0, #f5f5f5 70%);
+        }
+        body.light-theme .badge {
+            background: #e0e0e0;
+            color: #059669;
+            border-color: #05966944;
+        }
+        body.light-theme .hero-sub,
+        body.light-theme .section-header p,
+        body.light-theme .feature-card p,
+        body.light-theme .step p,
+        body.light-theme .download-box .section-header p,
+        body.light-theme .footer-col p,
+        body.light-theme .footer-col a,
+        body.light-theme .tech-item p {
+            color: #333;
+        }
+        body.light-theme .feature-card,
+        body.light-theme .step,
+        body.light-theme .download-box,
+        body.light-theme .download-card,
+        body.light-theme .tech-item,
+        body.light-theme .pricing-card {
+            background: #fff;
+            border-color: #ddd;
+        }
+        body.light-theme .download-card {
+            background: #f7f7f7;
+        }
+        body.light-theme .pricing-card .divider {
+            background: #ddd;
+        }
+        body.light-theme .pricing-card .features-list li {
+            color: #333;
+        }
+        body.light-theme .pricing-card .price {
+            color: #111;
+        }
+        body.light-theme .pricing-card .price .price-currency {
+            color: #666;
+        }
+        body.light-theme .pricing-card .package-sub {
+            color: #666;
+        }
+        body.light-theme .features,
+        body.light-theme .how-to-works {
+            background: #f0f0f0;
+        }
+        body.light-theme .tech-stack {
+            background: #f5f5f5;
+        }
+        body.light-theme .pricing {
+            background: #f5f5f5;
+        }
+        body.light-theme .footer {
+            background: #eaeaea;
+            border-top: 1px solid #ccc;
+        }
+        body.light-theme .footer-bottom {
+            border-top: 1px solid #ccc;
+            color: #555;
+        }
+        body.light-theme .theme-toggle {
+            background: #eee;
+            border-color: #aaa;
+            color: #111;
+        }
+        body.light-theme .screenshot-placeholder {
+            background: #e8e8f0;
+            border-color: #ccc;
+        }
+        body.light-theme .download {
+            background: #f5f5f5;
+        }
+        body.light-theme .download-box {
+            background: linear-gradient(145deg, #f0f0f8, #fff);
+        }
+        body.light-theme .pricing-card.popular {
+            border-color: #2563EB;
+            box-shadow: 0 0 30px rgba(37, 99, 235, 0.15);
+        }
+        body.light-theme .pricing-card.popular:hover {
+            box-shadow: 0 20px 60px rgba(37, 99, 235, 0.25);
+        }
+        body.light-theme .pricing-badge {
+            background: #2563EB;
+        }
+        body.light-theme .pricing-header-flex>div p {
+            color: #333;
+        }
+        body.light-theme .currency-toggle-wrapper {
+            background: #fff;
+            border-color: #ddd;
+        }
+        body.light-theme .currency-label {
+            color: #888;
+        }
+        body.light-theme .currency-label.active {
+            color: #111;
+        }
+        body.light-theme .screenshot-img:hover {
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+        body.light-theme .download-card .dl-buttons .btn-outline {
+            border-color: #ccc;
+            color: #333;
+        }
+        body.light-theme .download-card .dl-buttons .btn-outline:hover {
+            border-color: #3B82F6;
+            color: #3B82F6;
+        }
+
+        /* ============================================================ */
+        /* ===== RESPONSIVE ===== */
+        /* ============================================================ */
+        @media (max-width: 900px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content {
+                align-items: center;
+            }
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            .hero-sub {
+                max-width: 100%;
+            }
+            .hero-meta {
+                justify-content: center;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .screenshot-placeholder {
+                max-width: 100%;
+            }
+            .pricing-grid {
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            }
+            .pricing-header-flex {
+                flex-direction: column;
+                text-align: center;
+            }
+            .pricing-header-flex>div {
+                text-align: center;
+            }
+            .currency-toggle-wrapper {
+                margin-top: 4px;
+            }
+            .download-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .btn-lg {
+                padding: 12px 28px;
+                font-size: 1rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+                width: 100%;
+                max-width: 320px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-buttons .btn {
+                width: 100%;
+            }
+            .feature-card {
+                text-align: center;
+            }
+            .download-box {
+                padding: 40px 20px;
+            }
+            .features-grid,
+            .tech-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                justify-items: center;
+            }
+            .feature-card,
+            .tech-item,
+            .pricing-card {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            .steps {
+                grid-template-columns: 1fr;
+                justify-items: center;
+            }
+            .step {
+                width: 100%;
+                max-width: 350px;
+                margin: 0 auto;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .pricing-card .price {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== Navigation ===== -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="brand">📧 Mail Management Elite</a>
+            <div class="nav-actions">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="toggle-icon">🌙</span>
+                </button>
+                <a href="#download" class="btn btn-primary btn-sm">Download</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <span class="badge">🚀 Production Ready v3.0</span>
+                <h1>Professional <span>Gmail Automation</span> & Management Tools</h1>
+                <p class="hero-sub">
+                    Streamline your gmail workflows with Mail Management Elite. Bulk operations, Playwright automation, Profile management with maximum security.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#download" class="btn btn-primary btn-lg">Download Now</a>
+                    <a href="#features" class="btn btn-outline btn-lg">Explore Features</a>
+                </div>
+                <div class="hero-meta">
+                    <span>📧 Bulk Email Operations</span>
+                    <span>🤖 Playwright Integration</span>
+                    <span>🔐 Maximum Security</span>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="screenshot-placeholder">
+                    <img id="guiPreview" src="gui-dark.png" alt="Mail Management Elite" class="screenshot-img" />
+                    <p style="margin-top: 12px; color: #aaa; font-size: 0.9rem;">
+                        Python Based • CustomTkinter GUI • Dark/Light Mode
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== YouTube Video ===== -->
+    <section class="video-section">
+        <div class="container">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/your-video-id" title="AutoGuard Browser Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Features ===== -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Mail Management Elite?</h2>
+                <p>Built for professionals who need powerful gmail automation and management capabilities.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Playwright Automation</h3>
+                    <p>Full browser automation with Playwright integration. Automate complex gmail workflows, form fills, and multi-step processes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📧</div>
+                    <h3>Bulk Gmail Operations</h3>
+                    <p>Manage multiple gmail accounts simultaneously. Bulk check, bulk login, and bulk profile security operations with advanced threading.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>2FA & Security</h3>
+                    <p>Built-in 2FA support with TOTP/HOTP. Secure password management, encryption, and credential storage.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👤</div>
+                    <h3>Profile Management</h3>
+                    <p>Create, save, and manage gmail profiles with custom settings. Import/Export profiles with CSV support.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Worldwide Support</h3>
+                    <p>Access and manage your gmail accounts from anywhere in the world with seamless connectivity and localization.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Modern CustomTkinter GUI</h3>
+                    <p>Beautiful dark/light-mode interface with CustomTkinter. Intuitive controls, real-time logs, and progress tracking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Tech Stack ===== -->
+    <section class="tech-stack">
+        <div class="container">
+            <div class="section-header">
+                <h2>Built with Modern Technologies</h2>
+                <p>Leveraging industry-leading tools for reliability and performance.</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <span class="tech-emoji">🎭</span>
+                    <h4>Playwright</h4>
+                    <p>Modern browser automation framework for complex workflows operations.</p>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-emoji">🖼️</span>
+                    <h4>CustomTkinter</h4>
+                    <p>Modern GUI framework with beautiful dark/light-mode interface and native feel.</p>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-emoji">🐍</span>
+                    <h4>Python 3.8+</h4>
+                    <p>Powerful scripting language with extensive library support and async capabilities.</p>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-emoji">🔐</span>
+                    <h4>PyOTP</h4>
+                    <p>Industry-standard 2FA implementation with TOTP/HOTP support.</p>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-emoji">📊</span>
+                    <h4>NumPy</h4>
+                    <p>Efficient data processing and numerical operations for bulk workflows.</p>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-emoji">⚡</span>
+                    <h4>Multi-Threading</h4>
+                    <p>Concurrent processing with ThreadPoolExecutor for maximum performance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== How To Works ===== -->
+    <section class="how-to-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How To Works</h2>
+                <p>Simple steps to automate your gmail management workflows.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <h4>Install & Launch</h4>
+                    <p>Download Mail Management Elite, install it on your machine, and launch the app — no cloud registration required.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <h4>Check Mail Status</h4>
+                    <p>Input/Paste/Import gmail accounts manually. Check & filter valid gmail for automation.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <h4>+ Add Accounts</h4>
+                    <p>Input/Paste/Import Gmail|Password|Recovery Mail|Authenticator|App Password manually.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <h4>Automate & Scale</h4>
+                    <p>Run task operations, monitor progress in real-time, and export results with detailed logs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRICING ===== -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <div class="pricing-header-flex">
+                    <div>
+                        <h2>Choose Your Plan</h2>
+                        <p>Pick the package that fits your gmail automation needs.</p>
+                    </div>
+                    <!-- Currency Toggle -->
+                    <div class="currency-toggle-wrapper">
+                        <span class="currency-label" id="labelUSDT">USDT</span>
+                        <label class="switch">
+                            <input type="checkbox" id="currencyToggle" checked>
+                            <span class="slider round"></span>
+                        </label>
+                        <span class="currency-label" id="labelBDT">BDT</span>
+                        <span class="rate-hint" id="rateHint">(1 USDT = 125 ৳)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pricing-grid">
+
+                <!-- Starter -->
+                <div class="pricing-card" data-plan="starter">
+                    <div class="package-icon">🌟</div>
+                    <h3>Starter</h3>
+                    <p class="package-sub">For individuals & freelancers</p>
+                    <div class="price" data-bdt="600">
+                        <span class="price-number">600</span> <span class="price-currency">৳</span>
+                    </div>
+                    <p class="price-note">One‑time payment</p>
+                    <div class="divider"></div>
+                    <ul class="features-list">
+                        <li><span class="check">✔</span> 1 Month Validity</li>
+                        <li><span class="check">✔</span> Unlimited Email Accounts</li>
+                        <li><span class="check">✔</span> Advanced Automation</li>
+                        <li><span class="check">✔</span> Profile Management</li>
+                    </ul>
+                    <a href="#" target="_blank" class="btn btn-whatsapp wa-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                        Contact on WhatsApp
+                    </a>
+                </div>
+
+                <!-- Pro (Popular) -->
+                <div class="pricing-card popular" data-plan="professional">
+                    <span class="pricing-badge">🔥 Most Popular</span>
+                    <div class="package-icon">🚀</div>
+                    <h3>Professional</h3>
+                    <p class="package-sub">Best for agencies & teams</p>
+                    <div class="price" data-bdt="3000">
+                        <span class="price-number">3000</span> <span class="price-currency">৳</span>
+                    </div>
+                    <p class="price-note">One‑time payment</p>
+                    <div class="divider"></div>
+                    <ul class="features-list">
+                        <li><span class="check">✔</span> 6 Month Validity</li>
+                        <li><span class="check">✔</span> Unlimited Email Accounts</li>
+                        <li><span class="check">✔</span> Advanced Automation</li>
+                        <li><span class="check">✔</span> Profile Management</li>
+                    </ul>
+                    <a href="#" target="_blank" class="btn btn-whatsapp wa-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                        Contact on WhatsApp
+                    </a>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="pricing-card" data-plan="enterprise">
+                    <div class="package-icon">👑</div>
+                    <h3>Enterprise</h3>
+                    <p class="package-sub">Best for large organizations</p>
+                    <div class="price" data-bdt="5000">
+                        <span class="price-number">5000</span> <span class="price-currency">৳</span>
+                    </div>
+                    <p class="price-note">One‑time payment</p>
+                    <div class="divider"></div>
+                    <ul class="features-list">
+                        <li><span class="check">✔</span> 12 Month Validity</li>
+                        <li><span class="check">✔</span> Unlimited Email Accounts</li>
+                        <li><span class="check">✔</span> Advanced Automation</li>
+                        <li><span class="check">✔</span> Profile Management</li>
+                    </ul>
+                    <a href="#" target="_blank" class="btn btn-whatsapp wa-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                        Contact on WhatsApp
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Download ===== -->
+    <section id="download" class="download">
+        <div class="container">
+            <div class="download-box">
+                <div class="section-header">
+                    <h2>Ready to Automate Your Email Workflows?</h2>
+                    <p>Download the latest version and start managing gmails like a Professional.</p>
+                </div>
+                <div class="download-grid">
+                    <!-- Windows -->
+                    <div class="download-card">
+                        <div class="os-icon">
+                            <i class="fa-brands fa-windows"></i>
+                            <span class="version-badge">v3.0</span>
+                        </div>
+                        <h4>Windows</h4>
+                        <p class="os-version">Windows 10/11 • 64-bit</p>
+                        <div class="dl-buttons">
+                            <!--- <a href="#" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-download"></i> Installer (.exe)
+                            </a> --->
+                            <a href="https://github.com/Munna-Soft/MailManagementElite/releases/latest/download/Mail_Management_Elite.zip" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-archive"></i> Portable (.zip)
+                            </a>
+                        </div>
+                    </div>
+					
+                    <!-- macOS -->
+                    <div class="download-card">
+                        <div class="os-icon">
+                            <i class="fa-brands fa-apple"></i>
+                            <span class="version-badge">v3.0</span>
+                        </div>
+                        <h4>macOS</h4>
+                        <p class="os-version">Apple Silicon + Intel</p>
+                        <div class="dl-buttons">
+                            <a href="#" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-download"></i> Installer (.pkg)
+                            </a>
+                            <a href="#" target="_blank" class="btn btn-outline">
+                                <i class="fas fa-archive"></i> Portable (.dmg)
+                            </a>
+                        </div>
+                    </div>
+					
+                    <!-- Linux -->
+                    <div class="download-card">
+                        <div class="os-icon">
+                            <i class="fa-brands fa-linux"></i>
+                            <span class="version-badge">v3.0</span>
+                        </div>
+                        <h4>Linux</h4>
+                        <p class="os-version">AppImage + DEB</p>
+                        <div class="dl-buttons">
+                            <a href="#" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-download"></i> AppImage
+                            </a>
+                            <a href="#" target="_blank" class="btn btn-outline">
+                                <i class="fas fa-archive"></i> DEB Package
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <p class="download-note">🔹 License key required for activation • Full features included • Local data storage</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-col">
+                <h4>📧 Mail Management Elite</h4>
+                <p>Professional Gmail Automation & Management Tools</p>
+            </div>
+            <div class="footer-col">
+                <h5>Contact</h5>
+                <a href="https://t.me/SpeedXmunna" target="_blank">📧 Telegram</a>
+                <a href="https://activepanel.org" target="_blank">🌐 activepanel.org</a>
+            </div>
+            <div class="footer-col">
+                <h5>Follow</h5>
+                <div class="social-links">
+                    <a href="https://facebook.com/The.Munna" target="_blank">Facebook</a>
+                    <a href="https://github.com/Munna-Soft" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/the-munna" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2026 Munna MasterMind — All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================================
+        // 🔧 CONFIGURATION – change only this value to update all prices
+        // ============================================================
+        const CONVERSION_RATE = 125; // 1 USDT = 125 BDT
+
+        // Smooth scroll for anchor links
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Theme Toggle with dynamic image
+            const toggleBtn = document.getElementById('themeToggle');
+            const toggleIcon = toggleBtn.querySelector('.toggle-icon');
+            const guiPreview = document.getElementById('guiPreview');
+
+            const IMAGES = {
+                dark: 'gui-dark.png',
+                light: 'gui-light.png'
+            };
+
+            toggleBtn.addEventListener('click', function() {
+                document.body.classList.toggle('light-theme');
+
+                if (document.body.classList.contains('light-theme')) {
+                    toggleIcon.textContent = '☀️';
+                    guiPreview.src = IMAGES.light;
+                } else {
+                    toggleIcon.textContent = '🌙';
+                    guiPreview.src = IMAGES.dark;
+                }
+            });
+
+            // ===== CURRENCY TOGGLE (automatic conversion) =====
+            const currencyToggle = document.getElementById('currencyToggle');
+            const rateHint = document.getElementById('rateHint');
+            const labelUSDT = document.getElementById('labelUSDT');
+            const labelBDT = document.getElementById('labelBDT');
+
+            rateHint.textContent = `(1 USDT = ${CONVERSION_RATE} ৳)`;
+
+            const priceElements = document.querySelectorAll('.pricing-card .price');
+
+            function formatNumber(num) {
+                if (Number.isInteger(num)) return num.toString();
+                return num.toFixed(2);
+            }
+
+            function updatePrices(showBDT) {
+                if (showBDT) {
+                    labelBDT.classList.add('active');
+                    labelUSDT.classList.remove('active');
+                } else {
+                    labelUSDT.classList.add('active');
+                    labelBDT.classList.remove('active');
+                }
+
+                priceElements.forEach(el => {
+                    const bdtValue = parseFloat(el.getAttribute('data-bdt'));
+                    const numberSpan = el.querySelector('.price-number');
+                    const currencySpan = el.querySelector('.price-currency');
+
+                    if (showBDT) {
+                        numberSpan.textContent = formatNumber(bdtValue);
+                        currencySpan.textContent = '৳';
+                    } else {
+                        const usdtValue = bdtValue / CONVERSION_RATE;
+                        numberSpan.textContent = formatNumber(usdtValue);
+                        currencySpan.textContent = 'USDT';
+                    }
+                });
+
+                // Update WhatsApp links
+                const waLinks = document.querySelectorAll('.wa-link');
+                const phone = '8801968629792';
+                waLinks.forEach(link => {
+                    const card = link.closest('.pricing-card');
+                    if (!card) return;
+                    const plan = card.getAttribute('data-plan');
+                    let planName, bdtPrice;
+                    if (plan === 'starter') {
+                        planName = 'Starter';
+                        bdtPrice = 600;
+                    } else if (plan === 'professional') {
+                        planName = 'Professional';
+                        bdtPrice = 3000;
+                    } else if (plan === 'enterprise') {
+                        planName = 'Enterprise';
+                        bdtPrice = 5000;
+                    } else {
+                        return;
+                    }
+
+                    const usdtPrice = bdtPrice / CONVERSION_RATE;
+                    const displayPrice = showBDT ? bdtPrice : usdtPrice;
+                    const displayCurrency = showBDT ? 'BDT' : 'USDT';
+                    const otherCurrency = showBDT ? 'USDT' : 'BDT';
+                    const otherPrice = showBDT ? usdtPrice : bdtPrice;
+
+                    const formattedDisplay = typeof displayPrice === 'number' ? formatNumber(displayPrice) :
+                    displayPrice;
+                    const formattedOther = typeof otherPrice === 'number' ? formatNumber(otherPrice) : otherPrice;
+
+                    const msg =
+                        `I am interested in getting the ${planName} package of Mail Management Elite. The price is ${formattedDisplay} ${displayCurrency} ( ${formattedOther} ${otherCurrency} ). I want to know the details.`;
+                    link.href = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+                });
+            }
+
+            // Set initial state: checkbox checked = BDT
+            currencyToggle.checked = false;
+            updatePrices(false);
+
+            currencyToggle.addEventListener('change', function() {
+                updatePrices(this.checked);
+            });
+
+            console.log('📧 Mail Management Elite v3.0');
+            console.log(`💰 Conversion rate: 1 USDT = ${CONVERSION_RATE} BDT`);
+        });
+    </script>
+</body>
+</html>
