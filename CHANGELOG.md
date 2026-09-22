@@ -1,15 +1,14 @@
 ## 🔄 Changelog
 
-### Version 3.0 (Latest)
-
-- ✨ Playwright integration for browser automation
-- 🎨 Modern CustomTkinter GUI with dark mode
-- 🔐 Enhanced 2FA support with PyOTP
-- 📧 Improved bulk email operations
-- ⚡ Multi-threaded processing
-- 🌐 DNS and SMTP verification
-- 📊 CSV import/export functionality
-- 🔒 Secure license system
+### Version 3.0.0 🚀 Major release with significant improvements and new features
+- [Added] Check mail status for multiple accounts simultaneously
+- [Added] Auto login & managing multiple email accounts
+- [Added] Playwright integration for faster browser automation
+- [Added] Modern CustomTkInter GUI with dark/light mode
+- [Improved] Enhanced 2FA support with PyOTP
+- [Improved] Multi-threaded processing
+- [Improved] CSV import/export functionality
+- [Improved] Secure license system
 
 ### Version 2.x
 

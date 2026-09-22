@@ -26,7 +26,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Mail Management Elite – Professional Gmail Automation & Management Tools" />
     <meta name="twitter:description" content="Automate your gmail workflows with Mail Management Elite. Bulk operations, profile management, and Playwright integration." />
-    <meta name="twitter:image" content="https://mailmanagement.vercel.app/og-image.png" />
+    <meta name="twitter:image" content="https://mailmanagement.vercel.app/og-image2.png" />
 	
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -49,6 +49,127 @@
             line-height: 1.5;
             scroll-behavior: smooth;
             transition: background 0.3s, color 0.3s;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ===== Animated Background ===== */
+        .animated-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bg-gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: float-orb 20s infinite ease-in-out;
+            will-change: transform;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, #3B82F6, #3B82F6 20%, transparent 70%);
+            top: -15%;
+            left: -10%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #22D3EE, #22D3EE 20%, transparent 70%);
+            top: 30%;
+            right: -10%;
+            animation-delay: 7s;
+        }
+
+        .orb-3 {
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, #10B981, #10B981 20%, transparent 70%);
+            bottom: -15%;
+            left: 25%;
+            animation-delay: 14s;
+        }
+
+        @keyframes float-orb {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(50px, -60px) scale(1.15);
+            }
+            66% {
+                transform: translate(-40px, 40px) scale(0.85);
+            }
+        }
+
+        /* Particle system */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(59, 130, 246, 0.6);
+            border-radius: 50%;
+            animation: particle-float 15s infinite linear;
+            box-shadow: 0 0 4px rgba(59, 130, 246, 0.8);
+        }
+
+        @keyframes particle-float {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Light theme adjustments */
+        body.light-theme .bg-gradient-orb {
+            opacity: 0.12;
+            filter: blur(100px);
+        }
+
+        body.light-theme .orb-1 {
+            background: radial-gradient(circle, #3B82F6, #3B82F6 20%, transparent 70%);
+        }
+
+        body.light-theme .orb-2 {
+            background: radial-gradient(circle, #0EA5E9, #0EA5E9 20%, transparent 70%);
+        }
+
+        body.light-theme .orb-3 {
+            background: radial-gradient(circle, #10B981, #10B981 20%, transparent 70%);
+        }
+
+        body.light-theme .particle {
+            background: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 0 3px rgba(59, 130, 246, 0.6);
         }
 
         .container {
@@ -283,6 +404,32 @@
         .screenshot-img:hover {
             transform: scale(1.04);
             box-shadow: 0 12px 40px rgba(59, 130, 246, 0.3);
+        }
+
+        body.light-theme .screenshot-img:hover {
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ===== Video Section ===== */
+        .video-section {
+            padding: 0 0 60px;
+            background: #0B0E14;
+        }
+
+        .video-wrapper {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+            border: 1px solid #2a2a2a;
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            display: block;
         }
 
         /* ===== Sections ===== */
@@ -760,6 +907,47 @@
             margin-top: 30px;
         }
 
+        /* Coming Soon Overlay */
+        .download-card.coming-soon {
+            position: relative;
+        }
+
+        .download-card.coming-soon::before {
+            content: 'Coming Soon...';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 14, 20, 0.92);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3B82F6;
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .download-card.coming-soon:hover::before {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .download-card.coming-soon:hover .dl-buttons a {
+            pointer-events: none;
+        }
+
+        body.light-theme .download-card.coming-soon::before {
+            background: rgba(245, 245, 245, 0.95);
+            color: #2563EB;
+        }
+
         /* ===== Footer ===== */
         .footer {
             background: #0a0a0a;
@@ -919,6 +1107,12 @@
         body.light-theme .download-box {
             background: linear-gradient(145deg, #f0f0f8, #fff);
         }
+        body.light-theme .video-wrapper {
+            border-color: #ccc;
+        }
+        body.light-theme .video-section {
+            background: #f5f5f5;
+        }
         body.light-theme .pricing-card.popular {
             border-color: #2563EB;
             box-shadow: 0 0 30px rgba(37, 99, 235, 0.15);
@@ -1059,6 +1253,14 @@
     </style>
 </head>
 <body>
+    <!-- ===== Animated Background ===== -->
+    <div class="animated-background">
+        <div class="bg-gradient-orb orb-1"></div>
+        <div class="bg-gradient-orb orb-2"></div>
+        <div class="bg-gradient-orb orb-3"></div>
+        <div class="particles" id="particles"></div>
+    </div>
+
     <!-- ===== Navigation ===== -->
     <header class="navbar">
         <div class="container nav-container">
@@ -1076,18 +1278,18 @@
     <section class="hero">
         <div class="container hero-container">
             <div class="hero-content">
-                <span class="badge">🚀 Production Ready v3.0</span>
+                <span class="badge">🚀 Production Ready v3.0.0</span>
                 <h1>Professional <span>Gmail Automation</span> & Management Tools</h1>
                 <p class="hero-sub">
-                    Streamline your gmail workflows with Mail Management Elite. Bulk operations, Playwright automation, Profile management with maximum security.
+                    Secure your gmail accounts with Mail Management Elite. Playwright automation, Bulk operations, Profile management with maximum security.
                 </p>
                 <div class="hero-buttons">
                     <a href="#download" class="btn btn-primary btn-lg">Download Now</a>
                     <a href="#features" class="btn btn-outline btn-lg">Explore Features</a>
                 </div>
                 <div class="hero-meta">
-                    <span>📧 Bulk Email Operations</span>
                     <span>🤖 Playwright Integration</span>
+                    <span>📧 Bulk Email Operations</span>
                     <span>🔐 Maximum Security</span>
                 </div>
             </div>
@@ -1095,7 +1297,7 @@
                 <div class="screenshot-placeholder">
                     <img id="guiPreview" src="gui-dark.png" alt="Mail Management Elite" class="screenshot-img" />
                     <p style="margin-top: 12px; color: #aaa; font-size: 0.9rem;">
-                        Python Based • CustomTkinter GUI • Dark/Light Mode
+                        Python Based • Dark/Light Mode
                     </p>
                 </div>
             </div>
@@ -1334,25 +1536,25 @@
                     <div class="download-card">
                         <div class="os-icon">
                             <i class="fa-brands fa-windows"></i>
-                            <span class="version-badge">v3.0</span>
+                            <span class="version-badge">v3.0.0</span>
                         </div>
                         <h4>Windows</h4>
                         <p class="os-version">Windows 10/11 • 64-bit</p>
                         <div class="dl-buttons">
-                            <!--- <a href="#" target="_blank" class="btn btn-primary">
+                            <a href="https://github.com/Munna-Soft/MailManagementElite/releases/latest/download/Mail_Management_Elite.exe" target="_blank" class="btn btn-primary">
                                 <i class="fas fa-download"></i> Installer (.exe)
-                            </a> --->
-                            <a href="https://github.com/Munna-Soft/MailManagementElite/releases/latest/download/Mail_Management_Elite.zip" target="_blank" class="btn btn-primary">
+                            </a> 
+                            <a href="https://github.com/Munna-Soft/MailManagementElite/releases/latest/download/Mail_Management_Elite.zip" target="_blank" class="btn btn-outline">
                                 <i class="fas fa-archive"></i> Portable (.zip)
                             </a>
                         </div>
                     </div>
 					
                     <!-- macOS -->
-                    <div class="download-card">
+                    <div class="download-card coming-soon">
                         <div class="os-icon">
                             <i class="fa-brands fa-apple"></i>
-                            <span class="version-badge">v3.0</span>
+                            <span class="version-badge">v3.0.0</span>
                         </div>
                         <h4>macOS</h4>
                         <p class="os-version">Apple Silicon + Intel</p>
@@ -1365,12 +1567,12 @@
                             </a>
                         </div>
                     </div>
-					
+
                     <!-- Linux -->
-                    <div class="download-card">
+                    <div class="download-card coming-soon">
                         <div class="os-icon">
                             <i class="fa-brands fa-linux"></i>
-                            <span class="version-badge">v3.0</span>
+                            <span class="version-badge">v3.0.0</span>
                         </div>
                         <h4>Linux</h4>
                         <p class="os-version">AppImage + DEB</p>
@@ -1384,7 +1586,7 @@
                         </div>
                     </div>
                 </div>
-                <p class="download-note">🔹 License key required for activation • Full features included • Local data storage</p>
+                <p class="download-note">🔹 All versions include full features · No cloud uploads · All data stored locally · 3 Days Free trial included</p>
             </div>
         </div>
     </section>
@@ -1394,7 +1596,7 @@
         <div class="container footer-container">
             <div class="footer-col">
                 <h4>📧 Mail Management Elite</h4>
-                <p>Professional Gmail Automation & Management Tools</p>
+                <p>Secure your gmail accounts with Mail Management Elite. Playwright automation, Bulk operations, Profile management with maximum security.</p>
             </div>
             <div class="footer-col">
                 <h5>Contact</h5>
@@ -1423,8 +1625,41 @@
         // ============================================================
         const CONVERSION_RATE = 125; // 1 USDT = 125 BDT
 
+        // ============================================================
+
+        // ===== ANIMATED BACKGROUND: Particle System =====
+        function initParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+
+                // Random starting position
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + 'vh';
+
+                // Random animation duration (10-20s)
+                const duration = 10 + Math.random() * 10;
+                particle.style.animationDuration = duration + 's';
+
+                // Random delay
+                particle.style.animationDelay = Math.random() * 5 + 's';
+
+                // Random size
+                const size = 1 + Math.random() * 3;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+
+                particlesContainer.appendChild(particle);
+            }
+        }
+
         // Smooth scroll for anchor links
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize animated background
+            initParticles();
             const links = document.querySelectorAll('a[href^="#"]');
             links.forEach(link => {
                 link.addEventListener('click', function(e) {
@@ -1537,8 +1772,8 @@
             }
 
             // Set initial state: checkbox checked = BDT
-            currencyToggle.checked = false;
-            updatePrices(false);
+            currencyToggle.checked = true;
+            updatePrices(true);
 
             currencyToggle.addEventListener('change', function() {
                 updatePrices(this.checked);
